@@ -1,0 +1,62 @@
+// Font personalisé
+@font-face {
+    font-family: 'urbanCuisine';
+    src: url('/assets/fonts/Cuisine.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+// PARTIE HEADER & NAVIGATION
+.subContainer {
+    display: flex;                // Active Flexbox
+    justify-content: center;      // Centre les éléments horizontalement
+    align-items: center;          // Aligne les éléments verticalement (si nécessaire)
+    position: relative;
+    width: 100%;
+}
+
+.imgLogo {
+    width: 100px;
+    height: auto;
+    margin-top: -8px;
+}
+
+.titre {
+    font-family: 'urbanCuisine';
+    height: 100px;
+    font-size: 4rem;
+}
+
+.navbar {
+    margin-top: -8px;
+}
+
+// PARTIE PAGE
+.body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.bodyContainer {
+    background-image: url("/assets/img/background-accueil.png");
+    background-size: cover;         /* L'image couvre toute la taille de l'élément */
+    background-position: center;    /* L'image est centrée */
+    background-attachment: fixed;   /* L'image reste fixe pendant le défilement */
+    height: 100vh;
+}
+
+.accroche {
+    margin-top: 150px;
+}
+
+.formulaire {
+    margin-top: 200px;
+}
+
+// COULEUR DE L'IMC
+.imc {
+    margin-top: 200px;
+}
+
+
