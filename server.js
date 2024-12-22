@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const path = require('path');
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public'))); // Configurer le dossier statique (CookOmatic)
 app.use(express.json());
 
@@ -13,25 +13,25 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // connexion a BD mongoDB
-mongoose.connect('mongodb://0.0.0.0:27017/cookingDB', {useNewUrlParser: true});
+mongoose.connect('mongodb://0.0.0.0:27017/cookingDB', { useNewUrlParser: true });
 
 // Construction d'un model Mongo
 const recipeSchema = new mongoose.Schema({
-    name : String,
-    desc : String,
+    name: String,
+    desc: String,
 });
 const Recipes = mongoose.model("Recipes", recipeSchema);
 
 // Création d'un model
-const pateBolognaise = new Recipes ({
-    name : "pates à la bolognaise",
-    desc : "Un délicieux plat de pates à la sauce bolognaise authentique"
+const pateBolognaise = new Recipes({
+    name: "pates à la bolognaise",
+    desc: "Un délicieux plat de pates à la sauce bolognaise authentique"
 });
 //pateBolognaise.save();
 
-const pateCarbonara = new Recipes ({
-    name : "pates à la carbonara",
-    desc : "un delicieux plat de pates à la carbonara façon italienne"
+const pateCarbonara = new Recipes({
+    name: "pates à la carbonara",
+    desc: "un delicieux plat de pates à la carbonara façon italienne"
 });
 //pateCarbonara.save(); // Sauvegarde en BDD
 
@@ -41,11 +41,12 @@ const pateCarbonara = new Recipes ({
 });*/
 
 // Action des routes
-app.get("/princ", function (req,res) {
-    res.send("<h1>Accueil Principale</h1>");
+app.get("/signup", function (req, res) {
+    const userLoggedIn = false;
+    res.render("signup", { userLoggedIn });
 });
 
-app.get("/accueil", function (req,res) {
+app.get("/accueil", function (req, res) {
     const userLoggedIn = false;
     res.render("accueil", { userLoggedIn });
 });

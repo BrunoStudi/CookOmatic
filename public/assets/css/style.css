@@ -55,4 +55,16 @@
   margin-top: 200px;
 }
 
+.form-sign {
+  margin-top: 200px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem; /* Ajoute un espace entre chaque champ */
+}
+
+label {
+  text-align: left; /* Assure que le label reste aligné à gauche */
+}
+
 /*# sourceMappingURL=style.css.map */

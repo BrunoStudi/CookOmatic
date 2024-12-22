@@ -1,154 +1,120 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <title>COOK 'OMATIC - Accueil</title>
+  </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-              rel="stylesheet" 
-              integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
-              crossorigin="anonymous">
-        <link rel="stylesheet" 
-              href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <link rel="stylesheet"
-              href="/assets/css/style.css">
-        <title>COOK 'OMATIC - Accueil</title>
-    </head>
+  <body>
+    <div class="bodyContainer">
+      <%- include('header') %> 
+      <%- include('navbar') %>
 
-    <body>
-      <div class="bodyContainer">
-        <!--HEADER-->
-        <header class="header">
-            <div class="bg-dark text-light d-flex justify-content-between">
-                <div class="p-2">
-                    <i class="bi bi-geo-alt-fill"></i>
-                    &nbsp4 Rue Leclerc Germain - Compiègne
-                </div>
-                <div class="p-2"><i class="bi bi-telephone-fill"></i>
-                    +33 0623687456
-                </div>
-            </div>
-            <div class="subContainer d-flex align-items-center">
-              <div class="logoContainer">
-                <img src="/assets/img/logo-site.png" alt="logo_site" class="imgLogo bg-secondary">
-              </div>
-              <div class="flex-grow-1"></div>
-              <div class="titreContainer h1 text-light bg-secondary text-center w-100">
-                <div class="titre py-2">Cook 'Omatic</div>
-              </div>
-            </div>
-        </header>
+      <!--ACCROCHE-->
+      <h4 class="accroche text-center">
+        Bienvenue sur notre site de recettes personnalisées, afin de mieux vous
+        connaitre, <br />
+        analyser votre IMC et vous proposer des recettes adaptées, <br />merci
+        de renseigner les informations dans le formulaire ci-dessous.
+      </h4>
 
-        <!--NAVIGATION-->
-        <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="/Accueil">Accueil</a>
-                    </li>
-                    <% if (userLoggedIn) { %>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Nos Recettes
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Entrée</a></li>
-                        <li><a class="dropdown-item" href="#">Plat Principal</a></li>
-                        <li><a class="dropdown-item" href="#">Déssert</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Bonus</a></li>
-                      </ul>
-                    </li>
-                    <% } %>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/princ">A propos de Cook'Omatic</a>
-                    </li>
-                    <% if (!userLoggedIn) { %>
-                      <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">S'inscrire</a>
-                      </li>
-                    <% } %>
-                    <li class="nav-item">
-                      <a class="nav-link" aria-current="page" href="#">
-                        <% if (userLoggedIn) { %>
-                          Se déconnecter
-                        <% } else { %>
-                          Se connecter
-                        <% } %></a>
-                    </li>
-                  </ul>
-                  <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Tapes un mot clé" aria-label="Search">
-                    <button class="btn btn-dark" type="submit">Rechercher</button>
-                  </form>
-                </div>
-              </div>
-        </nav>
-      
-        <!--ACCROCHE-->
-        <h4 class="accroche text-center">Bienvenue sur votre site de recettes personnalisées, afin de mieux vous connaitre et analyser votre IMC,
-        <br>
-        merci de rentrer votre poids dans le formulaire ci-dessous</h4>
+      <!--FORMULAIRE IMC-->
+      <form
+        class="formulaire text-center rounded"
+        action="/calcul-imc"
+        method="post"
+        id="imc-form"
+      >
+        <div
+          class="form-group col-8 col-sm-6 col-md-4 col-lg-2 mx-auto text-start"
+        >
+          <label
+            for="poids"
+            class="form-label rounded text-light bg-secondary py-1 px-2"
+            >Poids (kg)</label
+          >
+          <input
+            class="form-control"
+            id="poids"
+            type="number"
+            placeholder="Entre ton poids"
+            required
+          />
+        </div>
+        <div
+          class="form-group col-8 col-sm-6 col-md-4 col-lg-2 mx-auto text-start"
+        >
+          <label
+            for="taille"
+            class="form-label rounded text-light bg-secondary py-1 px-2"
+            >Taille (cm)</label
+          >
+          <input
+            class="form-control"
+            id="taille"
+            type="number"
+            placeholder="Entre ta taille"
+            required
+          />
+        </div>
+        <button class="btn btn-dark" type="submit" name="btn">Envoyer</button>
+      </form>
 
-        <!--FORMULAIRE IMC-->
-        <form class="formulaire text-center rounded"
-              action="/calcul-imc" 
-              method="post" 
-              id="imc-form">
-            <input id="poids" 
-                   type ="number"
-                   placeholder="Entre ton poids" required>
-            <input id="taille" 
-                   type="number"
-                   placeholder="Entre ta taille (cm)" required>
-            <button type="submit" 
-                    name="btn">Envoyer
-            </button>
-        </form>
+      <!--RESULTAT IMC-->
+      <p class="" id="resultat-imc" style="display: none"></p>
+    </div>
 
-        <!--RESULTAT IMC-->
-        <p class="" id="resultat-imc" style="display: none;"></p>
-      </div>
-      <!--SCRIPT JS IMC-->
-      <script>
-          // Fonction pour envoyer les données du formulaire au serveur
-          document.getElementById('imc-form').addEventListener('submit', function(e) {
-              e.preventDefault();  // Empêcher le formulaire de se soumettre normalement
-  
-              // Récupérer les valeurs du formulaire
-              const poids = parseFloat(document.getElementById('poids').value); //parsFloat pour être sur que la donnée traitée est un nombre.
-              const taille = parseFloat(document.getElementById('taille').value);
+    <!--SCRIPT JS IMC-->
+    <script>
+      // Fonction pour envoyer les données du formulaire au serveur
+      document
+        .getElementById("imc-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // Empêcher le formulaire de se soumettre normalement
 
-              // Envoyer les données au serveur via Fetch API
-              fetch('/calcul-imc', {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json'
-                  },
-                  body: JSON.stringify({ poids: poids, taille: taille })
-              })
-              .then(response => response.json())
-              .then(data => {
-                  // Afficher l'IMC sur la page
-                  const imc = data.imc;
-                  const imcInfo = data.imcInfo;
-                  const resultatImc = document.getElementById('resultat-imc');
-                  resultatImc.textContent = "Ton IMC est de : " + imc + ", " + imcInfo;
-                  resultatImc.style.display = "block";
-                  resultatImc.className = data.imcCategory; // Appliquer la classe CSS
-              })
-              .catch(error => console.error('Erreur:', error));
-          });
-      </script>
+          // Récupérer les valeurs du formulaire
+          const poids = parseFloat(document.getElementById("poids").value); //parseFloat pour être sur que la donnée traitée est un nombre.
+          const taille = parseFloat(document.getElementById("taille").value);
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-              integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
-              crossorigin="anonymous">
-      </script>
+          // Envoyer les données au serveur via Fetch API
+          fetch("/calcul-imc", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ poids: poids, taille: taille }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              // Afficher l'IMC sur la page
+              const imc = data.imc;
+              const imcInfo = data.imcInfo;
+              const resultatImc = document.getElementById("resultat-imc");
+              resultatImc.textContent =
+                "Ton IMC est de : " + imc + ", " + imcInfo;
+              resultatImc.style.display = "block";
+              resultatImc.className = data.imcCategory; // Appliquer la classe CSS
+            })
+            .catch((error) => console.error("Erreur:", error));
+        });
+    </script>
 
-    </body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

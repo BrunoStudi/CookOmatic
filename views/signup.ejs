@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <title>COOK 'OMATIC - Inscription</title>
+  </head>
+
+  <body>
+    <div class="bodyContainer">
+      <%- include('header') %> 
+      <%- include('navbar') %>
+
+      <div class="signupContainer">
+        <form
+          class="form-sign text-center rounded"
+          action="/signup"
+          method="post"
+          id="sign-up"
+        >
+          <div
+            class="form-group col-8 col-sm-6 col-md-4 col-lg-2 mx-auto text-start"
+          >
+            <label
+              for="name"
+              class="form-label rounded text-light bg-secondary py-1 px-2"
+              >&nbspNom</label
+            >
+            <input
+              class="form-control"
+              id="name"
+              type="string"
+              placeholder="Entre ton nom"
+              required
+            />
+          </div>
+          <div
+            class="form-group col-8 col-sm-6 col-md-4 col-lg-2 mx-auto text-start"
+          >
+            <label
+              for="lastname"
+              class="form-label rounded text-light bg-secondary py-1 px-2"
+              >Prénom</label
+            >
+            <input
+              class="form-control"
+              id="lastname"
+              type="string"
+              placeholder="Entre ton prénom"
+              required
+            />
+          </div>
+          <button class="btn btn-dark" type="submit" name="btn">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
