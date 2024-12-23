@@ -19,7 +19,7 @@
             >Accueil</a
           >
         </li>
-        <%# if (userLoggedIn) { %> 
+        <%# if (userLoggedIn) { %>
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -42,17 +42,21 @@
         <li class="nav-item">
           <a class="nav-link" href="/princ">A propos</a>
         </li>
-        <!-- <%# if (!userLoggedIn) { %> -->
+        <%# if (!userLoggedIn) { %>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="/signup">S'inscrire</a>
         </li>
-        <%# } %>
+        <%# } %> <%# if (!userLoggedIn) { %>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">
-            <%# if (userLoggedIn) { %> Se déconnecter <%# } else { %> Se connecter
-            <%# } %></a
+          <a class="nav-link" aria-current="page" href="/login">Se connecter</a>
+        </li>
+        <%# } else { %>
+        <li>
+          <a class="nav-link" aria-current="page" href="/logout"
+            >Se déconnecter</a
           >
         </li>
+        <%# } %>
       </ul>
       <form class="d-flex" role="search">
         <input
