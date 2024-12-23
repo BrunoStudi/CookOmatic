@@ -9,36 +9,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public'))); // Configurer le dossier statique (CookOmatic)
 app.use(express.json());
 
+// initialisation du moteur EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// connexion a BD mongoDB
-mongoose.connect('mongodb://0.0.0.0:27017/cookingDB', { useNewUrlParser: true });
+// connexion a mongoDB
+mongoose.connect('mongodb+srv://testDb:Asmae1985@cluster0.wy6vp.mongodb.net/omaticdb?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true }); //mongodb://0.0.0.0:27017/cookingDB
 
-// Construction d'un model Mongo
-const recipeSchema = new mongoose.Schema({
-    name: String,
-    desc: String,
-});
-const Recipes = mongoose.model("Recipes", recipeSchema);
-
-// Création d'un model
-const pateBolognaise = new Recipes({
-    name: "pates à la bolognaise",
-    desc: "Un délicieux plat de pates à la sauce bolognaise authentique"
-});
-//pateBolognaise.save();
-
-const pateCarbonara = new Recipes({
-    name: "pates à la carbonara",
-    desc: "un delicieux plat de pates à la carbonara façon italienne"
-});
-//pateCarbonara.save(); // Sauvegarde en BDD
-
-// Recherche d'un model
-/*Recipes.find({name : "pates à la bolognaise"}).then((data) => {
-    console.log(data);
-});*/
+// Models
+const User = require("./models/user");
 
 // Action des routes
 app.get("/signup", function (req, res) {
@@ -46,24 +25,22 @@ app.get("/signup", function (req, res) {
     res.render("signup", { userLoggedIn });
 });
 
+app.post("/signup", function (req,res) {
+    const user = new User ({
+        pseudo: req.body.pseudo,
+        username: req.body.name,
+        userlastname: req.body.lastname,
+        password: req.body.pwd
+    });
+    user.save()
+    .then(() => res.render("accueil"))
+    .catch((error) => res.status(500).json({ error }));
+});
+
 app.get("/accueil", function (req, res) {
     const userLoggedIn = false;
     res.render("accueil", { userLoggedIn });
 });
-
-/*app.post("/", function (req,res) {
-    const poids = parseFloat(req.body.poids);  // Assurez-vous que le poids est bien un nombre
-    const taille = parseFloat(req.body.taille) / 100;  // Convertir la taille en mètres
-
-    // Calcul de l'IMC
-    const imc = poids / (taille * taille);
-
-    // Afficher les résultats
-    console.log("Bonjour, ton poids est de " + poids + " Kilos et ta taille est de " + taille + "m");
-    console.log("Ton IMC est de " + imc.toFixed(2));  // Afficher l'IMC avec deux décimales
-
-    res.render('index', { imc: imc.toFixed(2) });  // Passer l'IMC à la vue
-});*/
 
 app.post("/calcul-imc", function (req, res) {
     // Récupérer le poids et la taille

@@ -1,4 +1,9 @@
-// Font personalisé
+// VARIABLES
+$margin-top-large: 200px;
+$margin-top-small: 150px;
+
+
+// FONT PERSONALISES
 @font-face {
     font-family: 'urbanCuisine';
     src: url('/assets/fonts/Cuisine.ttf') format('truetype');
@@ -27,6 +32,19 @@
     font-size: 4rem;
 }
 
+// MEDIA QUERIES POUR LE TITRE SUR ECRAN SMALL & MEDIUM
+@media screen and (max-width: 1280px) {
+    .titre {
+        font-size: 3rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .titre {
+        font-size: 2rem;
+    }
+}
+
 .navbar {
     margin-top: -8px;
 }
@@ -40,34 +58,26 @@
 
 .bodyContainer {
     background-image: url("/assets/img/background-accueil.png");
-    background-size: cover;         /* L'image couvre toute la taille de l'élément */
-    background-position: center;    /* L'image est centrée */
-    background-attachment: fixed;   /* L'image reste fixe pendant le défilement */
-    height: 100vh;
+    background-size: cover;         // L'image couvre toute la taille de l'élément
+    background-position: center;    // L'image est centrée 
+    background-attachment: fixed;   // L'image reste fixe pendant le défilement 
+    height: 100vh;                  // L'image prend tout l'affichage disponible
 }
 
 .accroche {
-    margin-top: 150px;
+    margin-top: $margin-top-small;
 }
 
-.formulaire {
-    margin-top: 200px;
-}
-
-// COULEUR DE L'IMC
-.imc {
-    margin-top: 200px;
-}
-
-// PARTIE PAGE SIGNUP
-.form-sign {
-    margin-top: 200px;
+.formulaire,
+.imc,
+.form-sign { // <-- ici page signup 
+    margin-top: $margin-top-large;
 }
 
 .form-group {
-    margin-bottom: 1.5rem; /* Ajoute un espace entre chaque champ */
+    margin-bottom: 1.5rem; // Ajoute un espace entre chaque champ
 }
 
 label {
-    text-align: left; /* Assure que le label reste aligné à gauche */
+    text-align: left; // Assure que le label reste aligné à gauche
 }

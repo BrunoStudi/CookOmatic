@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @font-face {
   font-family: "urbanCuisine";
   src: url("/assets/fonts/Cuisine.ttf") format("truetype");
@@ -25,6 +24,16 @@
   font-size: 4rem;
 }
 
+@media screen and (max-width: 1280px) {
+  .titre {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  .titre {
+    font-size: 2rem;
+  }
+}
 .navbar {
   margin-top: -8px;
 }
@@ -37,9 +46,9 @@
 
 .bodyContainer {
   background-image: url("/assets/img/background-accueil.png");
-  background-size: cover; /* L'image couvre toute la taille de l'élément */
-  background-position: center; /* L'image est centrée */
-  background-attachment: fixed; /* L'image reste fixe pendant le défilement */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   height: 100vh;
 }
 
@@ -47,24 +56,18 @@
   margin-top: 150px;
 }
 
-.formulaire {
-  margin-top: 200px;
-}
-
-.imc {
-  margin-top: 200px;
-}
-
+.formulaire,
+.imc,
 .form-sign {
   margin-top: 200px;
 }
 
 .form-group {
-  margin-bottom: 1.5rem; /* Ajoute un espace entre chaque champ */
+  margin-bottom: 1.5rem;
 }
 
 label {
-  text-align: left; /* Assure que le label reste aligné à gauche */
+  text-align: left;
 }
 
 /*# sourceMappingURL=style.css.map */
